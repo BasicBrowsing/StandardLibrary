@@ -11,13 +11,13 @@
 <br>
 
 **●  Encoding**  
-    **└  [Punycode]**                                       *Ben Noordhuis Punycode Library*
+    **└  [Punycode]**                                              *Ben Noordhuis Punycode Library*
 
 **●  Network**  
-    **├  [PublicSuffixes]**                 *Generated tree of public suffixes*  
+      **├  [PublicSuffixes]**                 *Generated tree of public suffixes*  
     **└  Hostname**  
-        **├  [Format]**                                      *Hostname format validation*  
-        **└  [Parse]**                                              *Hostname parsing / suffix resolution*
+          **├  [Format]**                                                   *Hostname format validation*  
+        **└  [Parse]**                                                        *Hostname parsing / suffix resolution*
 
 <br>
 <br>

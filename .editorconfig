@@ -1,0 +1,36 @@
+
+################################################################################
+#                                                                              #
+#                             Ｅｄｉｔｏｒｃｏｎｆｉｇ                             #
+#                                                                              #
+#                 This file defines basic file properties that                 #
+#                 editors / IDEs use when you edit documents.                  #
+#                                                                              #
+#                 Check https://EditorConfig.org for details.                  #
+#                                                                              #
+################################################################################
+
+
+root = true
+
+
+[*]
+
+end_of_line = lf
+
+
+[*.{editorconfig,gitignore,yaml,js,md,html,css}]
+
+insert_final_newline = true
+
+
+[*.{editorconfig,gitignore}]
+
+max_line_length = 80
+
+
+[*.{editorconfig,gitignore,json,yaml,js,md,html,css}]
+
+indent_style = space
+indent_size = 4
+charset = utf-8

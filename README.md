@@ -11,13 +11,13 @@
 <br>
 
 **●  Encoding**  
-    **└  [Punycode]**                                       *Ben Noordhuis Punycode Library*
+    **└  [Punycode]**                                              *Ben Noordhuis Punycode Library*
 
 **●  Network**  
-    **├  [PublicSuffixes]**                 *Generated tree of public suffixes*  
+      **├  [PublicSuffixes]**                 *Generated tree of public suffixes*  
     **└  Hostname**  
-        **├  [Format]**                                      *Hostname format validation*  
-        **└  [Parse]**                                              *Hostname parsing / suffix resolution*
+          **├  [Format]**                                                   *Hostname format validation*  
+        **└  [Parse]**                                                        *Hostname parsing / suffix resolution*
 
 <br>
 <br>
@@ -26,7 +26,7 @@
 
 <br>
 
--   **[Tool Public Suffixes]**
+-   **[Public Suffixes][Tool PSL]**
     
     *Generates a tree of public suffixes from the Mozilla public-suffix-list.*
 
@@ -40,4 +40,4 @@
 [Format]: Source/Network/Format.js
 [Parse]: Source/Network/Parse.js
 
-[Tool Public Suffixes]: Tools/PublicSuffixes
+[Tool PSL]: Tools/PublicSuffixes

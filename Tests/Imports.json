@@ -1,5 +1,6 @@
 {
     "imports" : {
-        "Assert" : "https://deno.land/std@0.163.0/testing/asserts.ts"
+        "Assert" : "https://deno.land/std@0.163.0/testing/asserts.ts" ,
+        "Colors" : "https://deno.land/std@0.163.0/fmt/colors.ts"
     }
 }

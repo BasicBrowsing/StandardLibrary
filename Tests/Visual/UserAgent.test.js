@@ -17,7 +17,7 @@ Deno.test('Firefox Useragent Parses',() => {
     
     assertEquals(version,'106.0');
     
-    assertEquals(system,[ 'Windows NT 10.0' , 'Win64' , 'x64' ]);
+    assertEquals(system,{ type : 'Windows' , version : 10 });
     
 })
 
@@ -32,6 +32,6 @@ Deno.test('Chrome Useragent Parses',() => {
     
     assertEquals(version,'106.0.0.0');
     
-    assertEquals(system,[ 'Windows NT 10.0' , 'Win64' , 'x64' ]);
+    assertEquals(system,{ type : 'Windows' , version : 10 });
     
 })

@@ -55,6 +55,8 @@ function matchChrome ( system , browser ){
             .split('/')
             .at(1));
             
+    system = parseSystem(system);
+            
     const type = 'Chrome';
     
     return { appleWebKit , version , system , type }
@@ -76,8 +78,70 @@ function matchFirefox ( system , browser ){
         .at(0)
         .split(':')
         .at(1);
+        
+    system = parseSystem(system);
             
     const type = 'Firefox';
     
     return { version , system , type }
 }
+
+
+
+function parseSystem ( system ){
+    
+    if(system.at(0).startsWith('Windows NT'))
+        return matchWindows(system);
+        
+    if(system.at(-1) === 'Linux')
+        return matchLinux(system);
+    
+    if(system.at(0) === 'Macintosh')
+        return matchOSX(system);
+        
+    throw 'A common system that isn\'t one of the three? Probably a parsing error.'
+}
+
+
+function matchLinux ( system ){
+    return { type : 'Linux' }
+}
+
+
+const WindowsVersions = {
+    '10.0' : 10 ,
+    '6.1' : 7
+}
+
+/**
+ *   (Windows NT <Version>; Win64; x64)
+ */
+ 
+function matchWindows ( system ){
+    
+    const type = system
+        .at(0)
+        .split(' ')
+        .at(-1);
+        
+    const version = WindowsVersions[type];
+    
+    return { version , type : 'Windows' }
+}
+
+
+/**
+ *  (Macintosh; Intel Mac OS X <Version>)
+ */
+
+function matchOSX ( system ){
+    
+    const version = system
+        .at(1)
+        .split(' ')
+        .at(-1)
+        .split(/\.|_/)
+        .join('.');
+    
+    return { version , type : 'OSX' }
+} 

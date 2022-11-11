@@ -1,9 +1,11 @@
 
+import { fromHLS } from '../Encoding/RGB.js'
+
 
 const { subtle } = crypto;
 
 
-async function colorFrom ( string ){
+async function hueFrom ( string ){
     
     const encoder = new TextEncoder;
     
@@ -13,24 +15,32 @@ async function colorFrom ( string ){
     const hash = await 
         subtle.digest('SHA-256',bytes);
         
-    return [ ... new Uint8Array(hash) ]
-        .slice(0,3);
+    const hue = [ ... new Uint8Array(hash) ]
+        .slice(0,2)
+        .reduce((a,b) => a ^ b);
+    
+    return (hue % 360) / 360;
+}
+
+async function colorFrom ( string , saturation = 0.4 , lightness = 0.4 ){
+    
+    const hue = await hueFrom(string);
+    
+    return fromHLS(hue,saturation,lightness);
 }
 
 
-export async function rgbFrom ( string ){
+export async function rgbFrom ( ...args ){
     
-    const [ r , g , b ] = await 
-        colorFrom(string);
-    
-    return { r , g , b };
+    const [ r , g , b ] = await colorFrom( ...args );
+
+    return { r , g , b }
 }
 
 
-export async function hexFrom ( string ){
+export async function hashFrom ( ...args ){
     
-    const digits = await 
-        colorFrom(string);
+    const digits = await colorFrom( ...args );
         
     const hex = digits
         .map((digit) => digit
@@ -38,5 +48,5 @@ export async function hexFrom ( string ){
             .padStart(2,'0'))
         .join('');
         
-    return `0x${ hex }`
+    return `#${ hex }`
 }
